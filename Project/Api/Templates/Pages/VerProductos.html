@@ -1,0 +1,39 @@
+{% extends 'Base.html' %}
+
+{% load static %}
+
+{% block Intermedio %}
+<section class="verproductosint"></section>
+{% endblock %}
+
+
+{% block cuerpo %}
+
+<div class="contenedor-productos">
+    {% for i in ListarProductos %}
+    <div class="card">
+        <h3>{{ i.Nombre }}</h3>
+        <p><strong>Precio:</strong> ${{ i.Precio }}</p>
+        <p><strong>Cantidad:</strong> {{ i.Cantidad }}</p>
+        <p><strong>Categoría:</strong> {{ i.Categoria }}</p>
+        <p class="descripcion">{{ i.Descripcion }}</p>
+        <p class="fecha">{{ i.Fecha }}</p>
+
+        {% if i.Imagen %}
+        <img src="{{ i.Imagen.url }}" alt="{{ i.Nombre }}">
+        {% else %}
+        <p>Sin imagen disponible</p>
+        {% endif %}
+
+        <a href="{% url 'Modificar' i.Codigo %}" class="btn btn-warning">Modificar</a>
+        
+    </div>
+
+
+     
+    {% empty %}
+    <p>No hay productos disponibles.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

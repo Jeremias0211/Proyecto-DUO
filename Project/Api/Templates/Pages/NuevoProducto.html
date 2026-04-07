@@ -1,0 +1,34 @@
+{% extends 'Base.html' %}
+
+{% load static %}
+
+{% block Intermedio %}
+<section class="nuevoproducto"></section>
+{% endblock %}
+
+{% block cuerpo %}
+<div class="contenedor_Formulario">
+    
+    <form action="" method="post" enctype="multipart/form-data"S>
+        <h1>Registro de Productos</h1>
+        {{Formulario}}
+        {% csrf_token %}
+        <input type="submit" value="Registrar Producto" class="btnr">
+        {% if Mensaje %}
+        <div class="alert alert-success" role="alert" id="Alerta">
+            {{Mensaje}}
+        </div>
+        {% endif %}
+    </form>
+</div>
+
+<script>
+    setTimeout(function () {
+        let alertas = document.getElementById('Alerta')
+        if (alertas) {
+            alertas.style.display = 'none'
+        }
+    }, 2000)  //---> Tiempo que esta
+</script>
+
+{% endblock %}

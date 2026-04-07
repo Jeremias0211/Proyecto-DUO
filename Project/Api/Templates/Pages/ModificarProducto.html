@@ -1,0 +1,29 @@
+{% extends 'Base.html' %}
+
+{% load static %}
+
+{% block cuerpo%}
+<div class="contenedor_Formulario">
+    <img src="{% static 'src/Forms/a.jpg' %}" alt="">
+    <form action="" method="post" enctype="multipart/form-data"S>
+        <h1>Modificación de Productos</h1>
+        {{Formulario}}
+        {% csrf_token %}
+        <input type="submit" value="Modificar Producto" class="btnr">
+        {% if Mensaje %}
+        <div class="alert alert-success" role="alert" id="Alerta">
+            {{Mensaje}}
+        </div>
+        {% endif %}
+    </form>
+</div>
+
+<script>
+    setTimeout(function () {
+        let alertas = document.getElementById('Alerta')
+        if (alertas) {
+            alertas.style.display = 'none'
+        }
+    }, 2000)  //---> Tiempo que esta
+</script>
+{% endblock %}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Cargamos la carpeta de archivos estáticos -->
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    <!-- Anexamos la Hoja de Estilos -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header class="encabezado">
+        <div class="logo-container">
+            <div class="logotipo"></div>
+            <div class="punto-varita"></div>
+        </div>
+        <nav class="menu">
+            <a href="{% url 'Productos' %}">Ver Productos</a>
+            <a href="{% url 'nuevo_producto' %}">Agregar Produtos</a>
+            <a href="">Contactos</a>
+        </nav>
+    </header>
+    {% block Intermedio %}
+    <section class="intermedio"></section>
+    {% endblock %}
+
+    <main class="cuerpo">
+        {% block cuerpo %}
+        <section class="seccion_info">
+            <div class="indumentaria">
+            </div>
+            <div class="contenedorcuerpo">
+                <h1> Agregar texto </h1>
+                <p>
+                    Agregar Texto
+                </p>
+        </section>
+
+        <div class="tarjetas_index">
+            <div class="tarjeta_volteo">
+                <div class="tarjeta_volteo-interno">
+                    <div class="tarjeta_volteo-front">
+                        <img src="" alt="">
+                    </div>
+                    <div class="tarjeta_volteo-back">
+                        Agregar texto
+                    </div>
+                </div>
+            </div>
+            <div class="tarjeta_volteo">
+                <div class="tarjeta_volteo-interno">
+                    <div class="tarjeta_volteo-front">
+                        
+                    </div>
+                    <div class="tarjeta_volteo-back">
+                       Agregar texto
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta_volteo">
+                <div class="tarjeta_volteo-interno">
+                    <div class="tarjeta_volteo-front">
+                       
+                    </div>
+                    <div class="tarjeta_volteo-back">
+                       Agregar texto
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta_volteo">
+                <div class="tarjeta_volteo-interno">
+                    <div class="tarjeta_volteo-front">
+                        
+                    </div>
+                    <div class="tarjeta_volteo-back">
+                          Agregar texto
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% endblock %}
+    </main>
+
+    <footer class="pie">
+        <div class="contenedorfooter">
+
+            <div class="contenido_footer">
+                <h1 class="titulo-footer"><span><img src="{% static 'src/Logo/Logo.png' %}" width="30"></span> 
+                </h1>
+                <p>
+                    Agregar texto
+                </p>
+            </div>
+
+            <div class="enlaces">
+                <h3>Enlaces</h3>
+                <a href="">Nosotros</a>
+                <a href="">Productos</a>
+                <a href="">Contactos</a>
+            </div>
+
+            <div class="logos">
+                <h3>Redes Sociales</h3>
+                <div class="iconos-redes">
+                    <img src="{% static 'src/Redes/Facebook.jpg' %}" alt="Facebook">
+                    <img src="{% static 'src/Redes/Instagram.jpg' %}" alt="Instagram">
+                    <img src="{% static 'src/Redes/Twitter.jpg' %}" alt="Twitter">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2026 Ropa Urbana. Todos los derechos reservados.</p>
+            <div class="legales">
+                <span>Privacidad</span>
+                <span>Términos</span>
+            </div>
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+
+</html>
