@@ -1,0 +1,59 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block title %}Inicio — Urban Leux{% endblock %}
+
+{% block hero_strip %}
+<section class="ulx-hero">
+    <div class="ulx-hero-bg" role="img" aria-label="Estilo urbano en la calle"></div>
+    <div class="ulx-hero-overlay"></div>
+    <div class="ulx-hero-content">
+        <h1 class="ulx-hero-title">ENTRÁ, REVOLVÉ,<br>ENCONTRÁ LO TUYO.</h1>
+        <p class="ulx-hero-tag">#JoyitasUrban</p>
+        <p class="ulx-hero-cta-wrap mt-4 mb-0">
+            <a href="{% url 'catalogo' %}" class="btn-comprar btn-comprar--hero">Urban Clothes — ver catálogo</a>
+        </p>
+    </div>
+</section>
+{% endblock %}
+
+{% block Intermedio %}{% endblock %}
+
+{% block cuerpo %}
+<section class="ulx-section ulx-section--white py-5">
+    <div class="container">
+        <h2 class="ulx-section-title text-center mb-3">Urban Clothes</h2>
+        <p class="text-center text-secondary-custom mx-auto mb-4 urban-clothes-lead">
+            Un solo catálogo con toda la ropa urbana: explorá prendas, talles y estilos en un mismo lugar.
+        </p>
+        <a href="{% url 'catalogo' %}" class="urban-clothes-feature d-block text-decoration-none text-reset">
+            <div class="urban-clothes-feature-visual" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80');" role="img" aria-label="Urban Clothes"></div>
+            <div class="urban-clothes-feature-bar">
+                <span class="urban-clothes-feature-title">Urban Clothes</span>
+                <span class="urban-clothes-feature-sub">Entrá al catálogo completo</span>
+            </div>
+        </a>
+    </div>
+</section>
+
+<section class="ulx-section ulx-section--grey py-5">
+    <div class="container text-center">
+        <h2 class="ulx-section-title mb-3">Todo en Urban Clothes</h2>
+        <p class="text-secondary-custom mb-4 mx-auto urban-clothes-lead">
+            Hombre, mujer, teens y accesorios conviven en una misma vitrina. Buscá por nombre o categoría en la barra superior.
+        </p>
+        <a href="{% url 'catalogo' %}" class="btn-comprar btn-comprar--inline">Abrir Urban Clothes</a>
+    </div>
+</section>
+
+<section class="ulx-mission py-5">
+    <div class="container">
+        <div class="ulx-mission-centered text-center mx-auto">
+            <p class="ulx-mission-line mb-2">REESCRIBIMOS LA HISTORIA DE LA MODA</p>
+            <p class="ulx-mission-highlight mb-0">SOLTAR ROPA ES SOLTAR HISTORIAS</p>
+            <p class="ulx-mission-text mt-4 mb-0">Cada prenda tiene una vida previa. En Urban Leux le damos una segunda vuelta: menos desperdicio, más estilo con conciencia.</p>
+            <button type="button" class="btn-ulx btn-ulx--outline-light mt-4">Ver más</button>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,10 +1,10 @@
 {% extends 'Base.html' %}
 {% load static %}
 
-{% block title %}Panel vendedor — Urban Leux{% endblock %}
+{% block title %}Urban Clothes — Urban Leux{% endblock %}
 
 {% block Intermedio %}
-<div class="page-banner verproductosint panel-vendedor-banner" role="presentation"></div>
+<div class="page-banner catalogo-banner" role="presentation"></div>
 {% endblock %}
 
 {% block cuerpo %}
@@ -12,19 +12,16 @@
     <header class="page-header mb-4">
         <div class="d-flex flex-wrap justify-content-between align-items-end gap-3">
             <div>
-                <h1 class="h2 mb-1">Mis productos</h1>
+                <h1 class="h2 mb-1">Urban Clothes</h1>
                 <p class="text-secondary-custom mb-0">
                     {% if busqueda %}
-                    Resultados para «{{ busqueda }}». Editá o eliminá cada artículo desde acá.
+                    Resultados para «{{ busqueda }}» en Urban Clothes.
                     {% else %}
-                    Gestión de prendas: cargá nuevos ítems o actualizá los existentes.
+                    Catálogo único de indumentaria urbana. Envíos y medios de pago consultando por contacto.
                     {% endif %}
                 </p>
             </div>
-            <div class="d-flex flex-wrap gap-2">
-                <a href="{% url 'catalogo' %}" class="btn btn-outline-secondary">Ver Urban Clothes</a>
-                <a href="{% url 'nuevo_producto' %}" class="btn btn-accent">+ Nuevo producto</a>
-            </div>
+           
         </div>
     </header>
 
@@ -32,7 +29,7 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
         {% for p in productos %}
         <div class="col">
-            <article class="card product-card h-100 shadow-sm border-0">
+            <article class="card product-card catalog-card h-100 shadow-sm border-0">
                 <div class="product-card-img-wrap">
                     {% if p.Imagen %}
                     <img src="{{ p.Imagen.url }}" class="card-img-top" alt="{{ p.Nombre }}">
@@ -48,16 +45,14 @@
                     <p class="card-text small text-secondary-custom flex-grow-1">{{ p.Descripcion }}</p>
                     <ul class="list-unstyled small mb-3 product-meta">
                         <li><strong>Precio</strong> ${{ p.Precio|floatformat:2 }}</li>
-                        <li><strong>Stock</strong> {{ p.Cantidad }} u.</li>
-                        <li><strong>Ingreso</strong> {{ p.Fecha|date:"d/m/Y" }}</li>
+                        {% if p.Cantidad > 0 %}
+                        <li><strong>Disponible</strong> {{ p.Cantidad }} u.</li>
+                        {% else %}
+                        <li class="text-muted"><strong>Stock</strong> Sin stock por ahora</li>
+                        {% endif %}
                     </ul>
-                    <div class="d-flex flex-wrap gap-2 mt-auto">
-                        <a href="{% url 'Modificar' p.Codigo %}" class="btn btn-outline-light btn-sm flex-grow-1">Editar</a>
-                        <form method="post" action="{% url 'eliminar_producto' p.Codigo %}" class="flex-grow-1"
-                              onsubmit="return confirm('¿Eliminar «{{ p.Nombre }}»? Esta acción no se puede deshacer.');">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-outline-danger btn-sm w-100">Eliminar</button>
-                        </form>
+                    <div class="mt-auto">
+                        <a href="{% url 'home' %}#contacto" class="btn-comprar btn-comprar--full">Comprar</a>
                     </div>
                 </div>
             </article>
@@ -65,9 +60,9 @@
         {% endfor %}
     </div>
     {% else %}
-    <div class="empty-state text-center py-5 px-3 rounded-4">
-        <p class="mb-3">Todavía no hay productos cargados.</p>
-        <a href="{% url 'nuevo_producto' %}" class="btn btn-accent">Cargar el primero</a>
+    <div class="empty-state text-center py-5 px-3">
+        <p class="mb-3">No hay productos que coincidan con tu búsqueda.</p>
+        <a href="{% url 'catalogo' %}" class="btn btn-accent">Ver todo Urban Clothes</a>
     </div>
     {% endif %}
 </div>
